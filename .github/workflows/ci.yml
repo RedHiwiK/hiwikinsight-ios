@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test (macOS host)
+        run: swift test
+      - name: Build (iOS Simulator)
+        run: xcodebuild build -scheme HiwiKInsightKit -destination 'generic/platform=iOS Simulator' -quiet
