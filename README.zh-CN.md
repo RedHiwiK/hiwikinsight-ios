@@ -28,12 +28,12 @@ Swift Package Manager：
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RedHiwiK/HiwiKInsightKit", from: "0.2.0"),
+    .package(url: "https://github.com/RedHiwiK/hiwikinsight-ios", from: "0.2.0"),
 ]
 ```
 
 或在 Xcode 中：**File > Add Package Dependencies...**，输入
-`https://github.com/RedHiwiK/HiwiKInsightKit`。
+`https://github.com/RedHiwiK/hiwikinsight-ios`。
 
 ## 快速开始
 
