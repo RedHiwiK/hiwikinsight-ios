@@ -1,6 +1,23 @@
-# HiwiKInsightKit
+<p align="center">
+  <img src=".github/logo.svg" width="128" height="128" alt="HiwiKInsightKit logo">
+</p>
 
-[English](README.md) | 简体中文
+<h1 align="center">HiwiKInsightKit</h1>
+
+<p align="center"><strong>隐私优先的 iOS 埋点 SDK，数据只发往你自己部署的 HiwiKInsight 服务端。</strong></p>
+
+<p align="center">
+  <a href="https://github.com/RedHiwiK/hiwikinsight-ios/actions/workflows/ci.yml"><img src="https://github.com/RedHiwiK/hiwikinsight-ios/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white" alt="Swift 6">
+  <img src="https://img.shields.io/badge/iOS-17%2B-000000?logo=apple&logoColor=white" alt="iOS 17+">
+  <img src="https://img.shields.io/badge/SwiftPM-compatible-F05138" alt="SwiftPM compatible">
+  <img src="https://img.shields.io/badge/dependencies-none-0FB5AE" alt="dependencies: none">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2EA44F" alt="License MIT"></a>
+</p>
+
+<p align="center">
+  <a href="#安装">安装</a> · <a href="#快速开始">快速开始</a> · <a href="https://github.com/RedHiwiK/HiwiKInsight">服务端</a> · <a href="README.md">English</a>
+</p>
 
 一个轻量、零依赖、隐私优先的 iOS 埋点 SDK。它记录匿名使用事件，压缩后批量发送到你自己部署的
 [HiwiKInsight](https://github.com/RedHiwiK/HiwiKInsight) 服务端。

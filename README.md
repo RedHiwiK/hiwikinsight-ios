@@ -1,6 +1,23 @@
-# HiwiKInsightKit
+<p align="center">
+  <img src=".github/logo.svg" width="128" height="128" alt="HiwiKInsightKit logo">
+</p>
 
-English | [Simplified Chinese](README.zh-CN.md)
+<h1 align="center">HiwiKInsightKit</h1>
+
+<p align="center"><strong>Privacy-first iOS analytics SDK for your self-hosted HiwiKInsight server.</strong></p>
+
+<p align="center">
+  <a href="https://github.com/RedHiwiK/hiwikinsight-ios/actions/workflows/ci.yml"><img src="https://github.com/RedHiwiK/hiwikinsight-ios/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <img src="https://img.shields.io/badge/Swift-6-F05138?logo=swift&logoColor=white" alt="Swift 6">
+  <img src="https://img.shields.io/badge/iOS-17%2B-000000?logo=apple&logoColor=white" alt="iOS 17+">
+  <img src="https://img.shields.io/badge/SwiftPM-compatible-F05138" alt="SwiftPM compatible">
+  <img src="https://img.shields.io/badge/dependencies-none-0FB5AE" alt="dependencies: none">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-2EA44F" alt="License MIT"></a>
+</p>
+
+<p align="center">
+  <a href="#installation">Installation</a> · <a href="#quick-start">Quick start</a> · <a href="https://github.com/RedHiwiK/HiwiKInsight">Server</a> · <a href="README.zh-CN.md">简体中文</a>
+</p>
 
 A small, dependency-free, privacy-first analytics SDK for iOS apps. It records anonymous usage
 events and sends them in compressed batches to your own self-hosted
