@@ -51,7 +51,7 @@ Swift Package Manager:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RedHiwiK/hiwikinsight-ios", from: "0.2.0"),
+    .package(url: "https://github.com/RedHiwiK/hiwikinsight-ios", from: "0.3.0"),
 ]
 ```
 
@@ -85,6 +85,10 @@ HiwiKInsight.setLaunchSource("widget_today")
 //    via StoreKit's appAccountToken and App Store Server Notifications.
 let token = HiwiKInsight.beginPurchase(product: product.id, context: "paywall_onboarding")
 let result = try await product.purchase(options: [.appAccountToken(token)])
+
+//    If your app already passes its own fixed appAccountToken (e.g. an account ID), pass it in instead:
+HiwiKInsight.beginPurchase(product: product.id, context: "paywall_onboarding", appAccountToken: accountID)
+let result = try await product.purchase(options: [.appAccountToken(accountID)])
 ```
 
 `trackScreen` belongs on standalone screens (the root of a push / fullScreenCover / sheet). For

@@ -6,7 +6,7 @@ Guide for AI coding agents working in this repository.
 
 - `Package.swift`: single library target `HiwiKInsightKit` (iOS 17+, macOS 14+ for tests), Swift 6.
 - `Sources/HiwiKInsightKit/`
-  - `HiwiKInsight.swift`: public static API (`start`, `signal`, `error`, `beginPurchase`, `setLaunchSource`, `screenViewed`, `setEnabled`, `flush`) and UIKit lifecycle hooks.
+  - `HiwiKInsight.swift`: public static API (`start`, `signal`, `error`, `beginPurchase` (with or without the app's own `appAccountToken`), `setLaunchSource`, `screenViewed`, `setEnabled`, `flush`) and UIKit lifecycle hooks.
   - `Engine.swift`: actor holding all state (install id, sessions, environment, flushing/backoff). Testable via injected clock, transport, defaults suite and storage directory.
   - `EventQueue.swift`: JSON Lines disk queue.
   - `Transport.swift`: HTTP `POST <endpoint>/v1/events` with raw DEFLATE.

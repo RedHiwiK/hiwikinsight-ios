@@ -45,7 +45,7 @@ Swift Package Manager：
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/RedHiwiK/hiwikinsight-ios", from: "0.2.0"),
+    .package(url: "https://github.com/RedHiwiK/hiwikinsight-ios", from: "0.3.0"),
 ]
 ```
 
@@ -79,6 +79,10 @@ HiwiKInsight.setLaunchSource("widget_today")
 //    把这笔购买关联到当前入口
 let token = HiwiKInsight.beginPurchase(product: product.id, context: "paywall_onboarding")
 let result = try await product.purchase(options: [.appAccountToken(token)])
+
+//    如果 App 已经在用自己固定的 appAccountToken（比如账号 ID），改成把它传进来：
+HiwiKInsight.beginPurchase(product: product.id, context: "paywall_onboarding", appAccountToken: accountID)
+let result = try await product.purchase(options: [.appAccountToken(accountID)])
 ```
 
 `trackScreen` 只挂在独立页面上（push / fullScreenCover / sheet 的根视图）。常驻挂载的 Tab 根视图，
