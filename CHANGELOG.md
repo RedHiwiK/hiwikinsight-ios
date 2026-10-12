@@ -4,6 +4,14 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project follows
 [Semantic Versioning](https://semver.org/).
 
+## 0.3.0
+
+- Added `beginPurchase(product:context:appAccountToken:)` for apps that already pass their own fixed
+  `appAccountToken` (for example an account ID) to StoreKit. It records the same `purchase.started`
+  event with that token (lowercase) and returns it unchanged. Attributing repeated tokens needs
+  HiwiKInsight server v1.1.1 or later; older servers attribute every purchase of the token to its first attempt.
+- No other wire-protocol changes; `PROTOCOL.md` now states that a `token` may repeat.
+
 ## 0.2.0
 
 Open-source release.

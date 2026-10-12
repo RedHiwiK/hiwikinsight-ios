@@ -81,7 +81,7 @@ request body at most 256 KB (at most 2 MB after decompression); event names matc
 | `app.opened` | `source` | The app was opened again from an external entry point (widget, notification) during an ongoing session. |
 | `screen.viewed` | `screen`, `module`, plus the screen's own params | A screen appeared. |
 | `screen.left` | `screen`, `module`, `duration_s` | A screen disappeared; dwell time in seconds. |
-| `purchase.started` | `product`, `context`, `token` | A purchase was initiated. `token` is also passed to StoreKit as `appAccountToken` (lowercase UUID), so the server can link App Store Server Notifications to it. |
+| `purchase.started` | `product`, `context`, `token` | A purchase was initiated. `token` is also passed to StoreKit as `appAccountToken` (lowercase UUID), so the server can link App Store Server Notifications to it. It is a new UUID per purchase by default, or the app's own fixed token (SDK 0.3.0+), so the same `token` may appear in many `purchase.started` events, also from different installs. |
 | `user.snapshot` | App-defined (bucketed values) | Sent once on the first session of each local calendar day. |
 | `error` | `id`, `category`, `message` | Error report. |
 

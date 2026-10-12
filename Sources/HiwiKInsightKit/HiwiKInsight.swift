@@ -89,16 +89,26 @@ public enum HiwiKInsight {
     /// StoreKit `appAccountToken`. The event is flushed immediately so the server can attribute the
     /// purchase when the App Store Server Notification arrives.
     public static func beginPurchase(product: String, context: String) -> UUID {
-        let token = UUID()
-        guard let engine = box.engine else { return token }
+        beginPurchase(product: product, context: context, appAccountToken: UUID())
+    }
+
+    /// Same as `beginPurchase(product:context:)` for apps that already pass their own fixed
+    /// `appAccountToken` (for example an account ID) to StoreKit: records `purchase.started` with that
+    /// token and returns it unchanged. The server picks the right attempt when one token is reused.
+    @discardableResult
+    public static func beginPurchase(product: String, context: String, appAccountToken: UUID) -> UUID {
+        guard let engine = box.engine else { return appAccountToken }
         let at = Date()
+        let params = purchaseStartedParams(product: product, context: context, token: appAccountToken)
         Task {
-            await engine.record("purchase.started",
-                                ["product": product, "context": context, "token": token.uuidString.lowercased()],
-                                at: at)
+            await engine.record("purchase.started", params, at: at)
             await engine.flush()
         }
-        return token
+        return appAccountToken
+    }
+
+    static func purchaseStartedParams(product: String, context: String, token: UUID) -> [String: String] {
+        ["product": product, "context": context, "token": token.uuidString.lowercased()]
     }
 
     /// Call when the app is opened from an external entry point such as a Home Screen widget or a

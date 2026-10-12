@@ -256,6 +256,14 @@ struct Fixture {
         #expect(out.values.allSatisfy { $0.count == 200 })
     }
 
+    @Test func beginPurchaseKeepsTheAppsToken() {
+        let account = UUID(uuidString: "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")!
+        #expect(HiwiKInsight.beginPurchase(product: "pro", context: "paywall", appAccountToken: account) == account)
+        let params = HiwiKInsight.purchaseStartedParams(product: "pro", context: "paywall", token: account)
+        #expect(params == ["product": "pro", "context": "paywall", "token": "e621e1f8-c36c-495a-93fc-0c247a3e6e5f"])
+        #expect(HiwiKInsight.beginPurchase(product: "pro", context: "paywall") != account)
+    }
+
     @Test func dailySnapshotOncePerDay() async {
         let f = Fixture()
         #expect(await f.engine.claimDailySnapshot())
