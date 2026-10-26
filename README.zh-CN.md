@@ -87,6 +87,14 @@ let result = try await product.purchase(options: [.appAccountToken(accountID)])
 
 `trackScreen` 只挂在独立页面上（push / fullScreenCover / sheet 的根视图）。常驻挂载的 Tab 根视图，
 请在切换 Tab 的地方手动调用 `HiwiKInsight.screenViewed(_:module:)`。
+挂了 `trackScreen` 的页面在 App 进后台时记 `screen.left`，回到前台再记 `screen.viewed`。如果 Tab 靠
+透明度切换，给每个 Tab 加 `.screenTrackingActive(selectedTab == tab)`，未选中 Tab 内 push 的页面才会记为离开：
+
+```swift
+NavigationStack { SettingsView() }
+    .opacity(selectedTab == .settings ? 1 : 0)
+    .screenTrackingActive(selectedTab == .settings)
+```
 
 ### 自动采集
 

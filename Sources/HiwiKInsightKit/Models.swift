@@ -58,7 +58,7 @@ struct Batch: Encodable {
 }
 
 enum HiwiKInsightKitVersion {
-    static let current = "0.2.0"
+    static let current = "0.4.0"
 }
 
 extension Date {

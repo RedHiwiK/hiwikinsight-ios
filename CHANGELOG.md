@@ -4,6 +4,16 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project follows
 [Semantic Versioning](https://semver.org/).
 
+## 0.4.0
+
+- `trackScreen` records `screen.left` when the app enters the background and `screen.viewed` again
+  when it becomes active, so dwell time no longer includes time spent in the background.
+- Added `screenTrackingActive(_:)` for containers that stay mounted while hidden (tabs switched by
+  opacity). Screens inside an inactive container record `screen.left`, and `screen.viewed` again
+  when it becomes active.
+- `HiwiKInsightKitVersion.current` now reports the package version (it still said 0.2.0 in 0.3.0).
+- No wire-protocol changes.
+
 ## 0.3.0
 
 - Added `beginPurchase(product:context:appAccountToken:)` for apps that already pass their own fixed
