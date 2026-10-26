@@ -93,6 +93,15 @@ let result = try await product.purchase(options: [.appAccountToken(accountID)])
 
 `trackScreen` belongs on standalone screens (the root of a push / fullScreenCover / sheet). For
 tab roots that stay mounted, call `HiwiKInsight.screenViewed(_:module:)` where the tab changes.
+A tracked screen also records `screen.left` when the app goes to the background and `screen.viewed`
+again when it returns. If tabs are switched by opacity, mark each tab with
+`.screenTrackingActive(selectedTab == tab)` so screens pushed inside a hidden tab are recorded as left:
+
+```swift
+NavigationStack { SettingsView() }
+    .opacity(selectedTab == .settings ? 1 : 0)
+    .screenTrackingActive(selectedTab == .settings)
+```
 
 ### Collected automatically
 

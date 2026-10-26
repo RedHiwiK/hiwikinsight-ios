@@ -35,3 +35,14 @@ xcodebuild build -scheme HiwiKInsightKit -destination 'generic/platform=iOS Simu
 - No third-party dependencies; no personal data, IP addresses or device identifiers.
 - Bump `HiwiKInsightKitVersion.current` and `CHANGELOG.md` when releasing.
 - English for code, comments and docs (`README.zh-CN.md` is the only Chinese file).
+
+## Release flow
+
+This is a public repository, so every change goes through a pull request:
+
+1. Branch from `main` (`feat/...`, `fix/...`); never commit to `main` directly.
+2. Behavior changes need tests; keep SwiftUI code thin and put the rules in plain types that `swift test` can cover.
+3. Update `CHANGELOG.md`; for a release also bump `HiwiKInsightKitVersion.current` in `Models.swift`.
+4. Push the branch and open a PR (Conventional Commits title, English description of what changed and how it was verified); wait for CI to pass, then squash-merge.
+5. Tag the merge commit on `main` as `vX.Y.Z` and publish a GitHub release titled `HiwiKInsightKit X.Y.Z` with the changelog section as notes.
+6. Then bump the apps that depend on it (they pin `upToNextMinorVersion`, so a minor release needs their requirement raised).
